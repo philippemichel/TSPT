@@ -1,0 +1,64 @@
+---
+subtitle: "Calcul du nombre de cas"
+toc: true
+lof: false
+lot: false
+cache: false
+---
+
+
+```{r info}
+rm(list=ls())
+library("baseph")
+library("tidyverse")
+library("kableExtra")
+library(epiDisplay)
+# sessionInfo()
+```
+
+# Généralités
+
+Étude prospective Multicentrique. Recherche N’Impliquant pas la Personne Humaine, questionnaire posé aux patients dans le cadre du soin courant. 
+
+
+Le risque $\alpha$ retenu sera de 0,05 & la puissance de 0,8. 
+
+
+# Taille de l'échantillon
+
+## Critère principal
+
+*Recueillir les données de la prévalence des TSPT et TSPTC des patients adultes souffrants de troubles liés à l’usage d’une substance au CMP.*
+
+*À l’aide de la Psychométrie : Questionnaire international sur les traumatismes (ITQ)* 
+
+
+Le critère principal est descriptif il n'y a donc pas de calcul précis du nombre de cas nécessaires. Néanmoins, en utilisant les normes pour les études type sondage & en faisant le calcul sur le cas le plus défavorable, soit une prévalence des troubles de  50% la taille de l'échantillon souhaitée serait autour de 96 dossiers exploitables. En comptant les aléas de la collecte des données, on visera 120 patients.
+
+
+## Critère secondaire 1
+
+*Distinguer la prévalence du TSPT et TSPTC parmi les patients diagnostiqués de TPST ITQ
+
+D'après l'étude *The international trauma questionnaire (ITQ) measures reliable and clinically significant treatment-related change in PTSD and complex PTSD*[@clo21] les résultats de l'échelle ITQ sont de : 
+
+```{r}
+#| label: tbl-itqv
+#| tbl-cap: ITQ (Cloitre 2021 - EUROPEAN JOURNAL OF PSYCHOTRAUMATOLOGY)
+
+Trouble <-  c("PTSD","CPTSD")
+Résultat <- c("15,84 ± 5,58", "31,0 ± 9,75")
+tt <- tibble(Trouble, Résultat)
+# kable(tt, caption = "ITQ (Cloitre 2021 - EUROPEAN JOURNAL OF PSYCHOTRAUMATOLOGY)", format = "markdown")
+```
+
+
+\appendix 
+
+# Technique {.appendix}
+
+L'analyse statistique sera réalisée avec le logiciel **R**[@rstat] & divers packages. Outre ceux cités dans le texte ou utilisera en particulier `tidyverse` [@tidy] & `baseph` [@baseph].
+
+Un dépôt GitHub sera utilisé qui ne comprendra que le code & non les données ou résultats. Au besoin un faux tableau de données sera présenté pour permettre des tests.
+
+<https://github.com/philippemichel/propice>
