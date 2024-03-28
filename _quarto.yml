@@ -1,4 +1,4 @@
-title: "TSPT"
+title: "IRTIPAP"
 lang: fr
 author:
   - name: "Dr Philippe MICHEL"
@@ -12,8 +12,8 @@ format:
   logo-space-after: "0\\baselineskip"
   documentclass: scrreprt
   number-sections: true
-  titlepage-footer: "M\\up{me} Déborah \\textsc{Delaby}\\newline \\newline Service de psychiatrie - Hôpital \\textsc{novo} (Site Pontoise)\\newline \\newline Chef de projet : M\\up{me} Véronique \\textsc{Da Silva}\\newline \\newline Repérage des Troubles de Stress Post-Traumatique auprès des patients adultes souffrants de troubles à l’usage de substances suivis en CMP – Étude descriptive multicentrique
-- RNIPH\\newline \\today"
+  titlepage-footer: "M\\up{me} Déborah \\textsc{Delaby}\\newline \\newline Service de psychiatrie - Hôpital \\textsc{novo} (Site Pontoise)\\newline \\newline Chef de projet : M\\up{me} Véronique \\textsc{Da Silva}\\newline \\newline Repérage des Troubles de Stress Post-Traumatique auprès des patients adultes souffrants de troubles à l’usage de substances suivis en CMP\\newline Étude descriptive multicentrique
+\\newline RNIPH\\newline\\newline \\today"
 titlepage-theme:
   title-fontstyle: ["Huge", "bfseries"]
   title-color: novo
@@ -38,7 +38,7 @@ number-sections: true
 toc: true
 lof: false
 lot: false
-mainfont: Fira-sans
+mainfont: Arsenal
 mainfontoptions:
   - Ligatures=TeX
 monofont: Fira Mono
@@ -51,9 +51,9 @@ papersize: a4
 editor: source
 bibliography: stat.bib
 cite-method: biblatex
-#csl: jama.csl
-#reference-location: margin
-#citation-location: margin
+csl: jama.csl
+reference-location: margin
+citation-location: margin
 license: "MIT"
 echo: false
 warning: false

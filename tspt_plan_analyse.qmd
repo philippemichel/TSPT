@@ -1,5 +1,6 @@
 ---
-subtitle: "Calcul du nombre de cas"
+subtitle: "Plan d'analyse statistique"
+documentclass: scrartcl
 toc: true
 lof: false
 lot: false
@@ -18,47 +19,70 @@ library(epiDisplay)
 
 # Généralités
 
-Étude prospective Multicentrique. Recherche N’Impliquant pas la Personne Humaine, questionnaire posé aux patients dans le cadre du soin courant. 
+Étude prospective multicentrique. Recherche N’Impliquant pas la Personne Humaine (RNIPH), questionnaire posé aux patients dans le cadre du soin courant. 
 
+Le risque $\alpha$ retenu sera de 0,05 & la puissance de 0,8. Les varaibles numériques dans les items autres que les questionnaires  seront discrétisées. 
 
-Le risque $\alpha$ retenu sera de 0,05 & la puissance de 0,8. 
+L'analyse portera sur trois groupes de patients :
 
+- Patients avec des troubles mais non-TSPT
+- Patients avec TSPT    
+- Patients avec TSPTC
 
 # Taille de l'échantillon
 
-## Critère principal
-
-*Recueillir les données de la prévalence des TSPT et TSPTC des patients adultes souffrants de troubles liés à l’usage d’une substance au CMP.*
-
-*À l’aide de la Psychométrie : Questionnaire international sur les traumatismes (ITQ)* 
+Le critère principal est descriptif il n'y a donc pas de calcul précis du nombre de cas nécessaires. Néanmoins, en utilisant les normes pour les études type sondage & en faisant le calcul sur le cas le plus défavorable, soit une prévalence des troubles de  50% la taille de l'échantillon souhaitée serait autour de 96 dossiers exploitables. En comptant les aléas de la collecte des données, on visera 120 patients. Ce nombre est calculé pour le critère principal, pour les critères secondaires qui comportent des comparaisons souvent nombreuses la puissance risque d'être faible d'autant plus que nombre des ces tests seront réalisés sur le sous groupe TSPT (comparaisons TSPT vs TSPTC). 
 
 
-Le critère principal est descriptif il n'y a donc pas de calcul précis du nombre de cas nécessaires. Néanmoins, en utilisant les normes pour les études type sondage & en faisant le calcul sur le cas le plus défavorable, soit une prévalence des troubles de  50% la taille de l'échantillon souhaitée serait autour de 96 dossiers exploitables. En comptant les aléas de la collecte des données, on visera 120 patients.
+# Validation des questionnaires
+
+Une recherche de corrélation entre les variables sera réalisée. Si certaines variables se montreront trop corrélées elles devront être exclues de l’étude après accord du promoteur.
+
+Chaque questionnaire sera évalué après ces corrections par le test alpha de Cronbach 4 . Un seuil d’environ 70 % sera retenu comme satisfaisant.
+
+## Données manquantes
+Le décompte des données manquantes sera réalisé & présenté par un tableau ou un graphique. Les variables comportant trop de données manquantes ou non utilisables ne seront pas prises
+en compte après validation par le promoteur ainsi que les questionnaires très mal remplis (Calcul des critères TSPT ou TSPTC impossible ). 
+
+Après ce premier tri une imputation des données manquantes[@miss] sera réalisée uniquement pour la recherche du meilleur modèle par step-by-tep descendant pour les analyses par régression. Néanmoins pour cette analyse, après choix du modèle, le calcul final sera fait avec les données réelles.
+
+# Critère principal
+
+*Évaluer la proportion de Troubles de Stress Post-Traumatique (TSPT) chez les patients atteints de troubles liés à l’usage de substances*
+
+Les proportions de TSPT & de TSPTC seront calculées sur l'échantillon & présentées en pourcentage avec un intervalle de confiance à 95 % calculé après transformation angulaire. On présentera : 
+
+ - Tous les TSPT (TSPT & TSPTC) vs les patients sans TSPT
+ - TSPT vs TSPTC vs les patients sans TSPT (critère secondaire 1)
+
+Les résultats détaillés du score ITQ item par item (échelles de Likert) seront présentés en quatre tableaux & graphiques [@likert].
+
+## Critère secondaire 2
+*Identifier les facteurs de risques en comparant les données démographiques des patients TSPT versus TSPTC*
+
+Une  recherche de facteurs prédictifs (age, sexe, antécédents, situation sociale & familiale\dots) sera réalisée en analyse simple (test du $\chi^2$) & en analyse multivariée (régression logistique).
 
 
-## Critère secondaire 1
+## Critère secondaire 3
 
-*Distinguer la prévalence du TSPT et TSPTC parmi les patients diagnostiqués de TPST ITQ
+*Identifier les pathologies les plus confrontées au TSPT et au TSPTC *
 
-D'après l'étude *The international trauma questionnaire (ITQ) measures reliable and clinically significant treatment-related change in PTSD and complex PTSD*[@clo21] les résultats de l'échelle ITQ sont de : 
+Un tableau présentant les différentes comorbidités selon le diagnostic (TPST vs TSPTC) sera réalisé. Un test du $\chi^2$ sera réalisé pour chacune. 
 
-```{r}
-#| label: tbl-itqv
-#| tbl-cap: ITQ (Cloitre 2021 - EUROPEAN JOURNAL OF PSYCHOTRAUMATOLOGY)
 
-Trouble <-  c("PTSD","CPTSD")
-Résultat <- c("15,84 ± 5,58", "31,0 ± 9,75")
-tt <- tibble(Trouble, Résultat)
-# kable(tt, caption = "ITQ (Cloitre 2021 - EUROPEAN JOURNAL OF PSYCHOTRAUMATOLOGY)", format = "markdown")
-```
+## Critère secondaire 4
+*Comparer la durée entre la prise en charge et le repérage  des patients avec un TSPT versus un TSPTC*
 
+L'analyse de la latence de prise en charge sera réalisée en analyse temporelle censurée à droite (*courbe de survie*). Les trois groupes seront comparés par un test du log-rank.
+
+Si des facteurs de risque (démographique, comorbidités\dots) sont identifiés en amont, un modèle de Cox sera présenté.
 
 \appendix 
 
 # Technique {.appendix}
 
-L'analyse statistique sera réalisée avec le logiciel **R**[@rstat] & divers packages. Outre ceux cités dans le texte ou utilisera en particulier `tidyverse` [@tidy] & `baseph` [@baseph].
+L'analyse statistique sera réalisée avec le logiciel **R**[@rstat] & divers packages. Outre ceux cités dans le texte ou utilisera en particulier `baseph` [@baseph] `gtsummary`[@gtsummary] & les packages du `tidyverse` [@tidy].
 
 Un dépôt GitHub sera utilisé qui ne comprendra que le code & non les données ou résultats. Au besoin un faux tableau de données sera présenté pour permettre des tests.
 
-<https://github.com/philippemichel/propice>
+<https://github.com/philippemichel/tspt>

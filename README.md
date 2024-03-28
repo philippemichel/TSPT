@@ -13,4 +13,5 @@
 
 
 - **14/03/2024** Calcul provisoire du nombre de cas.
+- **28/03/2024** Plan d'analyse statistique.
 
