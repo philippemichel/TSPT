@@ -1,6 +1,6 @@
 ![](novo_usrc.png)
 
-# TSPT
+# IRTIPAP
 
 <!-- badges: start -->
 

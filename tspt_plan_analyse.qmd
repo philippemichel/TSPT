@@ -13,15 +13,19 @@ rm(list=ls())
 library("baseph")
 library("tidyverse")
 library("kableExtra")
-library(epiDisplay)
+library("epiDisplay")
 # sessionInfo()
 ```
 
 # Généralités
 
-Étude prospective multicentrique. Recherche N’Impliquant pas la Personne Humaine (RNIPH), questionnaire posé aux patients dans le cadre du soin courant. 
+Étude prospective multicentrique. 
 
-Le risque $\alpha$ retenu sera de 0,05 & la puissance de 0,8. Les varaibles numériques dans les items autres que les questionnaires  seront discrétisées. 
+Recherche N’Impliquant pas la Personne Humaine (RNIPH), questionnaire posé aux patients dans le cadre du soin courant. 
+
+Le risque $\alpha$ retenu sera de 0,05 & la puissance de 0,8. Les variables numériques dans les items autres que le questionnaires ITQ seront discrétisées. Les comparaisons entre proportions seront réalisées par un test du $\chi^2$ de Pearson si les effectifs le permettent sinon par un test F de Fisher.
+
+Le diagnostic & donc la classification en TSPT ou TSPTC sera réalisé uniquement sur le questionnaire ITQ.
 
 L'analyse portera sur trois groupes de patients :
 
@@ -31,26 +35,27 @@ L'analyse portera sur trois groupes de patients :
 
 # Taille de l'échantillon
 
-Le critère principal est descriptif il n'y a donc pas de calcul précis du nombre de cas nécessaires. Néanmoins, en utilisant les normes pour les études type sondage & en faisant le calcul sur le cas le plus défavorable, soit une prévalence des troubles de  50% la taille de l'échantillon souhaitée serait autour de 96 dossiers exploitables. En comptant les aléas de la collecte des données, on visera 120 patients. Ce nombre est calculé pour le critère principal, pour les critères secondaires qui comportent des comparaisons souvent nombreuses la puissance risque d'être faible d'autant plus que nombre des ces tests seront réalisés sur le sous groupe TSPT (comparaisons TSPT vs TSPTC). 
+Le critère principal est descriptif il n'y a donc pas de calcul précis du nombre de cas nécessaires. Néanmoins, en utilisant les normes pour les études type sondage & en faisant le calcul sur le cas le plus défavorable, soit une prévalence des troubles de  50% la taille de l'échantillon souhaitée serait autour de 96 dossiers exploitables. En comptant les aléas de la collecte des données, on visera 120 patients. 
+
+Ce nombre est calculé pour le critère principal, pour les critères secondaires qui comportent des comparaisons souvent nombreuses la puissance risque d'être faible d'autant plus que nombre des ces tests seront réalisés uniquement sur le sous groupe TSPT (comparaisons TSPT vs TSPTC). 
 
 
 # Validation des questionnaires
 
-Une recherche de corrélation entre les variables sera réalisée. Si certaines variables se montreront trop corrélées elles devront être exclues de l’étude après accord du promoteur.
-
-Chaque questionnaire sera évalué après ces corrections par le test alpha de Cronbach 4 . Un seuil d’environ 70 % sera retenu comme satisfaisant.
+Une recherche de corrélation entre les variables sera réalisée. Si certaines variables (autre que le questionnaire ITQ) se montreront trop corrélées elles devront être exclues de l’étude après accord du promoteur.
 
 ## Données manquantes
-Le décompte des données manquantes sera réalisé & présenté par un tableau ou un graphique. Les variables comportant trop de données manquantes ou non utilisables ne seront pas prises
-en compte après validation par le promoteur ainsi que les questionnaires très mal remplis (Calcul des critères TSPT ou TSPTC impossible ). 
 
-Après ce premier tri une imputation des données manquantes[@miss] sera réalisée uniquement pour la recherche du meilleur modèle par step-by-tep descendant pour les analyses par régression. Néanmoins pour cette analyse, après choix du modèle, le calcul final sera fait avec les données réelles.
+Le décompte des données manquantes sera réalisé & présenté par un tableau ou un graphique. Les variables comportant trop de données manquantes ou non utilisables ne seront pas prises
+en compte après validation par le promoteur ainsi que les questionnaires mal remplis (Calcul des critères TSPT ou TSPTC impossible). 
+
+Après ce premier tri une imputation des données manquantes[@miss] sera réalisée uniquement pour la recherche du meilleur modèle par step-by-tep descendant pour les analyses par régression. Néanmoins pour ces analyses, après choix du modèle, le calcul final sera fait avec les données réelles.
 
 # Critère principal
 
 *Évaluer la proportion de Troubles de Stress Post-Traumatique (TSPT) chez les patients atteints de troubles liés à l’usage de substances*
 
-Les proportions de TSPT & de TSPTC seront calculées sur l'échantillon & présentées en pourcentage avec un intervalle de confiance à 95 % calculé après transformation angulaire. On présentera : 
+Les proportions de TSPT & de TSPTC seront calculées sur l'échantillon & présentées en pourcentage avec un intervalle de confiance à 95 % calculé après transformation angulaire (La proportion de TSPT attendue serait autour de 2 à 5 % cette transformation peut donc être utile). On présentera : 
 
  - Tous les TSPT (TSPT & TSPTC) vs les patients sans TSPT
  - TSPT vs TSPTC vs les patients sans TSPT (critère secondaire 1)
@@ -68,7 +73,6 @@ Une  recherche de facteurs prédictifs (age, sexe, antécédents, situation soci
 *Identifier les pathologies les plus confrontées au TSPT et au TSPTC *
 
 Un tableau présentant les différentes comorbidités selon le diagnostic (TPST vs TSPTC) sera réalisé. Un test du $\chi^2$ sera réalisé pour chacune. 
-
 
 ## Critère secondaire 4
 *Comparer la durée entre la prise en charge et le repérage  des patients avec un TSPT versus un TSPTC*
